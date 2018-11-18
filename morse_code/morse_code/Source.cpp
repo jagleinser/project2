@@ -3,15 +3,9 @@
 int main()
 {
 	bst bst; 
-	bst.encode("ha ha"); 
+	bst.encode("rawr"); 
+	bst.decode(".-. .- .-- .-.");
 
-
-
-
-
-
-
-	int o;
-	cin >> o;
+	system("pause");
 
 }

@@ -1,4 +1,8 @@
 ﻿  Source.cpp
-c:\users\jakeg\source\repos\morse_code\morse_code\bst.h(43): warning C4018: '<': signed/unsigned mismatch
-c:\users\jakeg\source\repos\morse_code\morse_code\bst.h(112): warning C4018: '<': signed/unsigned mismatch
+  bst.cpp
+c:\users\jakeg\source\repos\morse_code\morse_code\bst.cpp(49): warning C4018: '<': signed/unsigned mismatch
+c:\users\jakeg\source\repos\morse_code\morse_code\bst.cpp(101): warning C4018: '<': signed/unsigned mismatch
+c:\users\jakeg\source\repos\morse_code\morse_code\bst.cpp(116): warning C4018: '<': signed/unsigned mismatch
+c:\users\jakeg\source\repos\morse_code\morse_code\bst.cpp(143): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
   morse_code.vcxproj -> C:\Users\jakeg\source\repos\morse_code\Debug\morse_code.exe
