@@ -1,8 +1,8 @@
 #include <iostream>
-#include "bst.h"
+#include "MorseCodeTree.h"
 int main()
 {
-	bst bst; 
+	MorseCodeTree bst; 
 	bst.encode("rawr"); 
 	bst.decode(".-. .- .-- .-.");
 

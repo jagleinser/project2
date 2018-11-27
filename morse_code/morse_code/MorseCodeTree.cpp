@@ -1,18 +1,16 @@
-#include "bst.h"
+#include "MorseCodeTree.h"
 #include <iostream>
 #include <string>
 #include <vector>
 
 using namespace std;
 
-
-bst::bst()
+//Constructor for morse code tree
+MorseCodeTree::MorseCodeTree()
 {	
+	//Load contents of file containing the morse code table
 	string line;
 	ifstream myFile("morse_file.txt");
-	root = new node;
-	root->left = NULL;
-	root->right = NULL;
 
 	if (myFile.is_open())
 	{
@@ -25,24 +23,31 @@ bst::bst()
 
 		}
 		myFile.close();
-		
+		//With the file loaded into vLetter & vCode, build the tree
+		build();
 	}
-	else
-		cout << "ERROR: COULD NOT FIND FILE";
-
-	build();
+	else //If there is no file, we can't make the tree! This is a fatal exception!!!
+		throw std::runtime_error("Could not open file");
 
 }
-void bst::build()
-{
-	{
 
+//Builds the binary morse code tree from stored vector strings
+void MorseCodeTree::build()
+{
+	//Initialize the the root node
+	root = new node;
+	root->left = NULL;
+	root->right = NULL;
+	{
+		//For each entry in morse code
 		while (!vCode.empty())
 		{
+			//Start from the root
 			node * test = root;
 			string tempCode = vCode.front();
 			string tempLetter = vLetter.front();
 
+			//Insert it into the tree
 			for (int i = 0; i < tempCode.size(); i++)
 			{
 				if (tempCode[i] == '.')
@@ -89,11 +94,14 @@ void bst::build()
 
 	}
 }
-void bst::decode(string uInput)
+
+//Decodes a given morse string
+void MorseCodeTree::decode(string uInput)
 {
 	uInput.append(" ");
 	queue<string> tokens;
 
+	//tokenize
 	int counter = 0;
 	for (int i = 0; i < uInput.size(); i++)
 	{
@@ -104,6 +112,8 @@ void bst::decode(string uInput)
 			++i;
 		}
 	}
+
+	//for each token, find it in the tree
 	while (!tokens.empty())
 	{
 		node * test = root;
@@ -121,11 +131,15 @@ void bst::decode(string uInput)
 		tokens.pop();
 	}
 }
-void bst::searchInorder(node * node, string &result, char input)
+
+//Searches the tree recursively in order, adding it to the result string
+void MorseCodeTree::searchInorder(node * node, string &result, char input)
 {
+	//Base case - null
 	if (node == NULL)
 		return;
 
+	//Search the left
 	searchInorder(node->left, result, input);
 
 	if (node->letter[0] == input)
@@ -133,7 +147,9 @@ void bst::searchInorder(node * node, string &result, char input)
 
 	searchInorder(node->right, result, input);
 }
-void bst::encode(string uInput)
+
+//Encodes a given string in the morse code and prints it
+void MorseCodeTree::encode(string uInput)
 {
 	string result;
 

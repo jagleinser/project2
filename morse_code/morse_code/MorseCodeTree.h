@@ -4,11 +4,10 @@
 #include <queue>
 using namespace std;
 #pragma once
-#ifndef BST_H
-#define BST_H
 
-class bst {
+class MorseCodeTree {
 private:
+	//Internal structure for nodes of a binary tree
 	struct node {
 		string letter;
 		string code;
@@ -22,7 +21,7 @@ private:
 	queue<string> vCode;
 	queue<string> vLetter;
 public:
-	bst();
+	MorseCodeTree();
 	void build();
 	void decode(string);
 	void encode(string);
@@ -34,5 +33,3 @@ public:
 
 
 };
-
-#endif
